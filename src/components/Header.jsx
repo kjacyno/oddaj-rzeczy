@@ -1,4 +1,3 @@
-import Stack from '@mui/material/Stack';
 import PropTypes from 'prop-types';
 import * as React from 'react';
 import {Link} from 'react-router-dom';
@@ -24,12 +23,7 @@ function Header({user, setUser}) {
     };
   return (
       <nav className="nav-menu">
-        <Stack
-            direction={{sm: 'column', xl: 'row'}}
-            spacing={{sm: 1, md: 2, xl: 4}}
-            justifyContent="flex-end"
-            alignItems="center"
-        >
+<div className='user-btns'>
           {user ? (<>
               <Button
                   id="basic-button"
@@ -52,20 +46,14 @@ function Header({user, setUser}) {
                       Logout
                   </MenuItem>
               </Menu>
-          </>): (<>
-                <Link to={'/login'}>Zaloguj</Link>
-                <Link to={'/register'}>Załóż konto</Link>
+          </>) : (<>
+                <Link to={'/login'} className='menu-link'>Zaloguj</Link>
+                <Link to={'/register'} className='menu-link'>Załóż konto</Link>
               </>)
           }
-
-        </Stack>
+</div>
         <div className="menu-list">
-          <Stack
-              direction={{sm: 'column', xl: 'row'}}
-              spacing={{sm: 1, md: 2, xl: 4}}
-              justifyContent="flex-end"
-              alignItems="center"
-          >
+
             <li><ScrollLink to="home-header" spy={true} smooth={true}
                             offset={50} duration={500}>Start</ScrollLink></li>
             <li><ScrollLink to="idea" spy={true} smooth={true} offset={50}
@@ -77,7 +65,6 @@ function Header({user, setUser}) {
               organizacje</ScrollLink></li>
             <li><ScrollLink to="contact" spy={true} smooth={true}
                             offset={50} duration={500}>Kontakt</ScrollLink></li>
-          </Stack>
         </div>
       </nav>
   );

@@ -2,23 +2,48 @@
   margin-top: 2.5rem;
   right: 0;
 
-
   button {
     padding: .5rem;
   }
 
   .menu-list {
-    margin-top: 1.6rem;
+    margin-top: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
   }
 
   li {
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
     list-style: none;
+    margin-left: 2rem;
+    padding: .5rem;
 
-    a {
-      text-decoration: none;
-      cursor: pointer;
+    a:hover{
+        border: 1px solid $color-five-darkgrey;
+        border-radius: 5px;
     }
+  }
+}
+.user-btns{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  & a{
+    margin-left: 2rem;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+.menu-link {
+  padding: .5rem;
+  border: 1px solid transparent;
+transition: 0.2s;
+  &:hover {
+    border: 1px solid $color-third-yellowish;
+    border-radius: 5px;
+
   }
 }

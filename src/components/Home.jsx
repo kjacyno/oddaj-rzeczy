@@ -1,4 +1,4 @@
-import Stack from '@mui/material/Stack';
+import {Link} from "react-router-dom";
 import {Element} from 'react-scroll';
 import Header from "./Header.jsx";
 
@@ -7,24 +7,15 @@ export default function Home() {
         <Element name="scroll-wrapper">
             <section className="section1">
                 <div id="home-header">
-                   <menu><Header/></menu>
-
-                    {/*<div id="home-hero">*/}
-                    {/*    <img src="/src/assets/Home-Hero-Image.jpg" alt="home-hero"/>*/}
-                    {/*</div>*/}
+                    <menu><Header/></menu>
                     <div className="landing-form">
                         <h1>Zacznij pomagać!<br/>Oddaj niechciane rzeczy w zaufane ręce
                         </h1>
                         <img src="/src/assets/Decoration.svg" alt="decoration"/>
-                        <Stack
-                            direction={{sm: 'column', xl: 'row'}}
-                            spacing={{sm: 1, md: 2, xl: 4}}
-                            justifyContent="center"
-                            alignItems="center"
-                        >
-                            <button className="btn-lg">Oddaj rzeczy</button>
-                            <button className="btn-lg">Zorganizuj zbiórkę</button>
-                        </Stack>
+                        <div className="landing-form-btns">
+                            <button className="btn-lg"><Link to={'/login'}>Oddaj rzeczy</Link></button>
+                            <button className="btn-lg"><Link to={'/login'}>Zorganizuj zbiórkę</Link></button>
+                        </div>
                     </div>
                 </div>
                 <div className="stats">
@@ -40,10 +31,45 @@ export default function Home() {
                 </div>
             </section>
             <section id="idea">
-
+                <div className='idea-header'><h2>Wystarczą 4 proste kroki
+                </h2>
+                    <img src="/src/assets/Decoration.svg" alt="decoration"/></div>
+                <div className='idea-desc'> 
+                    <span>
+                      <img src="/src/assets/Icon-1.svg" alt="choose"/>
+                        <p>Wybierz rzeczy</p>
+                        <p>ubrania, zabawki, sprzęt i inne</p>
+                </span>
+                    <span>
+                        <img src="/src/assets/Icon-2.svg" alt="pack"/>
+                            <p>Spakuj je</p>
+                            <p>skorzystaj z worków na śmieci</p>
+                </span>
+                    <span>
+                        <img src="/src/assets/Icon-3.svg" alt="decide"/>
+                            <p>Zdecyduj komu chcesz pomóc</p>
+                            <p>wybierz zaufane miejsce</p>
+                </span>
+                    <span>
+                       <img src="/src/assets/Icon-4.svg" alt="send"/>
+                            <p>Zamów kuriera</p>
+                            <p>kurier przyjedzie w dogodnym terminie</p>
+                </span>
+                </div>
+                <button className="btn-lg"><Link to={'/login'}>Oddaj rzeczy</Link></button>
             </section>
             <section id='about'>
+                <div className='about-us'>
 
+                    <h3><br/>O nas</h3>
+                    <img src="/src/assets/Decoration.svg" alt="decoration"/>
+                    <p>Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery. Bunya nuts
+                        black-eyed pea prairie turnip leek lentil turnip greens parsnip.<br/><br/>
+                        <img src="/src/assets/Signature.svg" alt="signature"
+                             style={{height: 'auto', width: '20%',position:'relative', left: '30%', padding:'0', margin:'0'}}/>
+                    </p>
+                </div>
+                <img src="/src/assets/People.jpg" alt="people"/>
             </section>
             <section id='organizations'>
 
