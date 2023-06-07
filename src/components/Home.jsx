@@ -1,5 +1,6 @@
 import {Link} from "react-router-dom";
 import {Element} from 'react-scroll';
+import BasicPagination from "./BasicPagination.jsx";
 import Header from "./Header.jsx";
 
 export default function Home() {
@@ -60,19 +61,25 @@ export default function Home() {
             </section>
             <section id='about'>
                 <div className='about-us'>
-
-                    <h3><br/>O nas</h3>
+                    <h3>O nas</h3>
                     <img src="/src/assets/Decoration.svg" alt="decoration"/>
                     <p>Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery. Bunya nuts
                         black-eyed pea prairie turnip leek lentil turnip greens parsnip.<br/><br/>
                         <img src="/src/assets/Signature.svg" alt="signature"
-                             style={{height: 'auto', width: '20%',position:'relative', left: '30%', padding:'0', margin:'0'}}/>
+                             style={{
+                                 height: 'auto',
+                                 width: '20%',
+                                 position: 'relative',
+                                 left: '30%',
+                                 padding: '0',
+                                 margin: '0'
+                             }}/>
                     </p>
                 </div>
                 <img src="/src/assets/People.jpg" alt="people"/>
             </section>
             <section id='organizations'>
-
+                <BasicPagination/>
             </section>
             <section id='contact'>
 

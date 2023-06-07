@@ -36,13 +36,7 @@
 }
 
 .btn-lg {
-  padding: 1rem;
-  background-color: transparent;
-  border: 1px solid $color-four-grey;
-  border-radius: 5px;
-  margin-left: 1rem;
-  text-transform: uppercase;
-
+  @include btns-lg;
 }
 
 .stats {
@@ -52,19 +46,23 @@
   span {
     @include spans;
     font-size: 3rem;
+    font-weight: 300;
 
     p:first-child {
       font-size: 1rem;
+      font-weight: 400;
     }
 
     p:nth-child(2) {
       font-size: .8rem;
+      font-family: $font-alt;
+      font-weight: 300;
     }
   }
 }
 
 .idea-header {
-  margin: 2rem;
+  padding: 2rem;
   @include sections;
   flex-direction: column;
 }
@@ -116,42 +114,56 @@
   }
 
 }
-#idea{
 
-position: relative;
-.btn-lg {
-  font-size: 1.5rem;
-  position: absolute;
-  left:50%;
-  transform: translate(-50%, 50%);
-  margin: 0;
-}}
+#idea {
+
+  position: relative;
+
+  .btn-lg {
+    @include btns-lg;
+    font-size: 1.5rem;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    margin: 0;
+  }
+}
+
 #about {
   @include sections;
   margin-top: 8rem;
-  justify-content: space-between;
+  align-items: stretch;
   background-color: $color-primary-bright;
+
+  img:last-child {
+    width: 50%;
+    height: auto;
+    object-fit: cover;
+  }
+
 }
-img{
-  width: 50% ;
-}
-.about-us{
-text-align: center;
-height: 100%;
-width: 50%;
-  img{
+
+.about-us {
+  text-align: center;
+  height: auto;
+  width: 50%;
+  padding-top: 5rem;
+
+  img {
     height: auto;
     width: 40%;
-    padding: 2rem;
   }
-  h3{
-    font-size: 2.2rem;
-    margin: 0;
-  }
-  p{
+
+  p {
     font-size: 1.8rem;
     margin: 0;
     padding: 0 2rem;
   }
-
 }
+
+h3 {
+  font-size: 2.4rem;
+  margin: 0;
+  padding-bottom: 1.2rem;
+}
+

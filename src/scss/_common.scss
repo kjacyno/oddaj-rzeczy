@@ -20,7 +20,6 @@ a {
   height: auto;
   width: 100%;
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
 }
@@ -29,4 +28,14 @@ a {
   width: 20%;
   padding: 1rem;
   margin: 0;
+}
+@mixin btns-lg{
+  padding: 1rem;
+  background-color: transparent;
+  border: 1px solid $color-four-grey;
+  border-radius: 5px;
+  margin-left: 1rem;
+  text-transform: uppercase;
+  font-family: $font-base;
+  font-weight: 300;
 }
