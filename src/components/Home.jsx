@@ -1,6 +1,7 @@
 import {Link} from "react-router-dom";
 import {Element} from 'react-scroll';
 import BasicPagination from "./BasicPagination.jsx";
+import Contact from "./Contact.jsx";
 import Header from "./Header.jsx";
 
 export default function Home() {
@@ -82,7 +83,7 @@ export default function Home() {
                 <BasicPagination/>
             </section>
             <section id='contact'>
-
+                <Contact/>
             </section>
         </Element>
 
