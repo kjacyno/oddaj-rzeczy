@@ -1,11 +1,14 @@
 import {Container, CssBaseline} from "@mui/material";
+import {StoreProvider} from "easy-peasy";
 import {useState} from 'react'
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import DonationForm from "./components/DonationForm.jsx";
 
 import ErrorPage from "./components/ErrorPage.jsx";
 import Home from "./components/Home.jsx";
 import Login from "./components/Login.jsx";
 import Register from "./components/Register.jsx";
+import {store} from "./components/Store.js";
 
 function App() {
     const [user, setUser] = useState({})
@@ -19,6 +22,7 @@ function App() {
             path: 'login',
             element: <Login
                 setUser={setUser}
+                user={user}
             />,
         },
         {
@@ -27,6 +31,10 @@ function App() {
                 user={user}
                 setUser={setUser}
             />,
+        },
+        {
+            path: 'donation-form',
+            element: <DonationForm/>
         }
     ])
 
@@ -34,7 +42,9 @@ function App() {
         <>
             <CssBaseline/>
             <Container maxWidth="xl">
-                <RouterProvider router={router}/>
+                <StoreProvider store={store}>
+                    <RouterProvider router={router}/>
+                </StoreProvider>
             </Container>
         </>
     )

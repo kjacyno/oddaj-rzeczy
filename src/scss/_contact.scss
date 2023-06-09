@@ -39,13 +39,8 @@
       font-family: $font-base;
 
     }
-.error {
-  border-bottom: 1.5px solid red;
-}
-    .error-message{
-      color: red;
-      font-size: .9rem;
-      margin-top: 0;
+    .error {
+      border-bottom: 1.5px solid red;
     }
 
     textarea {
@@ -124,4 +119,10 @@
       padding-right: 55%;
     }
   }
+}
+
+.error-message{
+  color: red;
+  font-size: .9rem;
+  margin-top: 0;
 }

@@ -1,9 +1,8 @@
-// import {useEffect, useState} from "react";
 import {useEffect, useState} from "react";
 import {useForm} from "react-hook-form";
 
 export default function Contact() {
-const [success, setSuscces] = useState(false);
+const [success, setSuccess] = useState(false);
     const {register, handleSubmit, getValues, formState: {errors}, formState, reset} = useForm({
         defaultValues: {
             name: '',
@@ -30,7 +29,7 @@ const [success, setSuscces] = useState(false);
 
         console.log(re);
         if (re.status === 'success'){
-            setSuscces(true)
+            setSuccess(true)
         }
     }
     useEffect(() => {
@@ -74,7 +73,11 @@ const [success, setSuscces] = useState(false);
 
                     <div><label htmlFor="email">Wpisz swój e-mail</label>
                         <input id='email'
-                               {...register('email', {required: 'Podany e-mail jest nieprawidłowy'})}
+                               {...register('email', {required: 'Podany e-mail jest nieprawidłowy',
+                               pattern: {
+                                   value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
+                                   message:'Podany e-mail jest nieprawidłowy'
+                               }})}
                                type="text"
                                className={errors.email?.message ? 'error' : ''}
                                placeholder='kornka@email.com'/>
@@ -102,9 +105,9 @@ const [success, setSuscces] = useState(false);
         <footer>
             <div>Copyright by Coders Lab</div>
             <div>
-                <a href="https://www.facebook.com/" target="_blank">
+                <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
                     <img src="/src/assets/Facebook.svg" alt="facebook"/> </a>
-                <a href="https://www.instagram.com/" target="_blank">
+                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
                 <img src="/src/assets/Instagram.svg" alt="instagram"/></a>
             </div>
         </footer>
