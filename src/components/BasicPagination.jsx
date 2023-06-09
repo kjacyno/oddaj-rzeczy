@@ -24,6 +24,7 @@ export default function BasicPagination() {
         } else if (currentTab === 3){
             setItems(local);
         }
+        setCurrentPage(1)
     }, [currentTab]);
 
     return (
