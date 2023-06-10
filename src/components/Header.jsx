@@ -56,7 +56,7 @@ function Header() {
                         }}
                     >
                         <MenuItem id='logout' onClick={handleClose}>
-                            Logout
+                            Wyloguj
                         </MenuItem>
                     </Menu>
                 </>) : (<>
