@@ -1,11 +1,14 @@
-import {action, createStore} from "easy-peasy";
+
+import { action, createStore } from 'easy-peasy';
 
 export const store = createStore({
-    user: [],
+    user: JSON.parse(localStorage.getItem('user')),
     userLogin: action((state, payload) => {
-        state.user.push(payload);
+        state.user = payload;
+        localStorage.setItem('user', JSON.stringify(payload));
     }),
-    userLogout: action((state, payload) => {
-        state.user = state.user.filter(msg => msg !== payload);
+    userLogout: action((state) => {
+        state.user = '';
+        localStorage.removeItem('user');
     }),
 });

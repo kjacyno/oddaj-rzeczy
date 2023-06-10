@@ -1,15 +1,19 @@
+/* eslint-disable react/prop-types */
 import {Link} from "react-router-dom";
 import {Element} from 'react-scroll';
 import BasicPagination from "./BasicPagination.jsx";
 import Contact from "./Contact.jsx";
 import Header from "./Header.jsx";
 
-export default function Home() {
+export default function Home({user, setUser}) {
     return (
         <Element name="scroll-wrapper">
             <section className="section1">
                 <div id="home-header">
-                    <menu><Header/></menu>
+                    <menu><Header
+                    user={user}
+                    setUser={setUser}
+                    /></menu>
                     <div className="landing-form">
                         <h1>Zacznij pomagać!<br/>Oddaj niechciane rzeczy w zaufane ręce
                         </h1>

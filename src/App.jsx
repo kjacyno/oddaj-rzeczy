@@ -11,25 +11,23 @@ import Register from "./components/Register.jsx";
 import {store} from "./components/Store.js";
 
 function App() {
-    const [user, setUser] = useState({})
     const router = createBrowserRouter([
         {
             path: '/',
-            element: <Home/>,
+            element: <Home
+            />,
             errorElement: <ErrorPage/>,
         },
         {
             path: 'login',
             element: <Login
-                setUser={setUser}
-                user={user}
+
             />,
         },
         {
             path: 'register',
             element: <Register
-                user={user}
-                setUser={setUser}
+
             />,
         },
         {

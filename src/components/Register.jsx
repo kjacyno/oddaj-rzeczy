@@ -1,14 +1,13 @@
 /* eslint-disable react/prop-types */
 import {Container} from '@mui/material';
 import {useForm} from "react-hook-form";
-// import {useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
-import Header from '../components/Header.jsx';
 import {createNewUser} from '../firebase/firebaseAuth.js';
+import HeaderShort from "./HeaderShort.jsx";
 
-export default function Register({user, setUser}) {
+export default function Register() {
 
-    const {register, handleSubmit, getValues, formState: {errors}} = useForm({
+    const {register, handleSubmit, getValues, watch, formState: {errors}} = useForm({
         defaultValues: {
             name: '',
             email: '',
@@ -17,23 +16,20 @@ export default function Register({user, setUser}) {
     });
     const navigate = useNavigate();
 
-    async function handleNewUser(event) {
-        event.preventDefault();
+    async function handleNewUser() {
         const email = getValues('email');
         const password = getValues('password')
         await createNewUser(
-            {
-                displayName: email
-            },
             setUser, user, email, password
         );
+        console.log('signed up ', user)
         navigate('/')
 
     }
 
     return (
         <Container maxWidth="xl">
-            <Header/>
+            <HeaderShort/>
             <div className="register">
                 <h2>Załóż konto</h2>
                 <img src="/src/assets/Decoration.svg" alt="decoration"/>
@@ -62,7 +58,10 @@ export default function Register({user, setUser}) {
 
                     <label htmlFor="password">Powtórz hasło</label>
                     <input type="password"
-                           {...register('confirm', {required: 'Potwierdź hasło'})}
+                           {...register('confirm', {required: 'Potwierdź hasło',
+                               validate: (value) => value === watch("password") || "Passwords do not match"
+
+                           })}
                            id='confirm'/>
                     <p className='error-message'>{errors.confirm?.message}</p>
 

@@ -3,10 +3,12 @@ import {Container} from '@mui/material';
 import {useStoreActions} from "easy-peasy";
 import {useForm} from "react-hook-form";
 import {Link, useNavigate} from 'react-router-dom';
-import Header from '../components/Header.jsx';
 import {signIn} from '../firebase/firebaseAuth.js';
+import HeaderShort from "./HeaderShort.jsx";
 
-export default function Login({user, setUser}) {
+export default function Login() {
+    const userLogin =  useStoreActions((action) => action.userLogin);
+
     const {register, handleSubmit, getValues, formState: {errors}} = useForm({
         defaultValues: {
             name: '',
@@ -15,21 +17,25 @@ export default function Login({user, setUser}) {
         }
     });
     const navigate = useNavigate();
-    const userLogin = useStoreActions((action) => action.userLogin);
 
-    async function handleUserLogin(event) {
-        event.preventDefault();
+    async function handleUserLogin() {
         const email = getValues('email');
         const password = getValues('password')
-        await signIn(email, password, setUser);
-        console.log('signed in');
-        userLogin(user);
-        navigate('/')
+        try {
+            await signIn(email, password, userLogin);
+            navigate('/')
+        } catch (error) {
+            if (error.code === 'auth/wrong-password') {
+                alert('Hasło jest nieprawidłowe, spróbuj ponownie')
+            } else if(error.code === 'auth/too-many-requests'){
+                alert('Zbyt wiele prób, spróbuj ponownie za chwilę')
+            }
+        }
     }
 
     return (
         <Container maxWidth="xl">
-            <Header/>
+            <HeaderShort/>
             <div className="login">
                 <h2>Zaloguj się</h2>
                 <img src="/src/assets/Decoration.svg" alt="decoration"/>

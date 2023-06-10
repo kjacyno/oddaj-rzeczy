@@ -1,47 +1,51 @@
 import {
   createUserWithEmailAndPassword,
-  updateProfile,
   signOut,
   signInWithEmailAndPassword
 } from "firebase/auth";
 import {auth} from '/src/firebase/index.js';
 
-export async function  createNewUser(data, setUser, user, email, password){
+export async function  createNewUser(setUser, user, email, password){
   if (email.trim() && password.trim() !== ''){
     await createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      updateProfile(user, data);
       setUser(user);
     })
 
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.error(errorCode, errorMessage);
+      console.log(errorCode, errorMessage);
+
     });
-    setUser({...user, displayName: login})
   }
 }
 
 export function logOut(setUser) {
   signOut(auth).then(() => {
-    setUser('');
+    setUser('')
+    localStorage.removeItem('user');
+
   }).catch((error) => {
     console.log(error);
   });
 }
 
-export async function signIn(email, password, setUser) {
+export async function signIn(email, password, userLogin) {
 
   await signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     const user = userCredential.user;
-    setUser(user);
+    userLogin(user);
+    localStorage.setItem('user', JSON.stringify(user));
+    console.log('signed in', user);
   })
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
-    console.error(errorCode, errorMessage);
+    console.error(errorMessage)
+    console.log(errorCode);
+   throw error;
   });
 }
