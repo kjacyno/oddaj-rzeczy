@@ -59,7 +59,10 @@ export default function Login() {
 
                     <label htmlFor="pwd">Hasło</label>
                     <input type="password"
-                           {...register('password', {required: 'Podaj hasło'})}
+                           {...register('password', {required: 'Podaj hasło', minLength: {
+                               value: 6,
+                                   message: 'Hasło musi mieć min. 6 znaków'
+                               }})}
                            className={errors.password?.message ? 'error' : ''}
                            id='pwd'
                     />

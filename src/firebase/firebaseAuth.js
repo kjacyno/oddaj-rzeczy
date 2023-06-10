@@ -39,7 +39,6 @@ export async function signIn(email, password, userLogin) {
     const user = userCredential.user;
     userLogin(user);
     localStorage.setItem('user', JSON.stringify(user));
-    console.log('signed in', user);
   })
   .catch((error) => {
     const errorCode = error.code;

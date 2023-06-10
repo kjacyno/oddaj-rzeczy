@@ -1,6 +1,5 @@
 import {Container, CssBaseline} from "@mui/material";
 import {StoreProvider} from "easy-peasy";
-import {useState} from 'react'
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import DonationForm from "./components/DonationForm.jsx";
 
@@ -14,21 +13,16 @@ function App() {
     const router = createBrowserRouter([
         {
             path: '/',
-            element: <Home
-            />,
+            element: <Home/>,
             errorElement: <ErrorPage/>,
         },
         {
             path: 'login',
-            element: <Login
-
-            />,
+            element: <Login/>,
         },
         {
             path: 'register',
-            element: <Register
-
-            />,
+            element: <Register/>,
         },
         {
             path: 'donation-form',

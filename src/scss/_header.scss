@@ -38,6 +38,14 @@
     text-decoration: none;
     cursor: pointer;
   }
+  #basic-button{
+    text-decoration: none;
+    text-transform: none;
+    font-family: $font-base;
+    color: black;
+    font-size: .8rem;
+  }
+
 }
 
 .menu-link {

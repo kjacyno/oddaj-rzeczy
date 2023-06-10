@@ -5,22 +5,24 @@ import BasicPagination from "./BasicPagination.jsx";
 import Contact from "./Contact.jsx";
 import Header from "./Header.jsx";
 
-export default function Home({user, setUser}) {
+export default function Home() {
     return (
         <Element name="scroll-wrapper">
             <section className="section1">
                 <div id="home-header">
                     <menu><Header
-                    user={user}
-                    setUser={setUser}
                     /></menu>
                     <div className="landing-form">
                         <h1>Zacznij pomagać!<br/>Oddaj niechciane rzeczy w zaufane ręce
                         </h1>
                         <img src="/src/assets/Decoration.svg" alt="decoration"/>
                         <div className="landing-form-btns">
-                            <button className="btn-lg"><Link to={'/login'}>Oddaj rzeczy</Link></button>
-                            <button className="btn-lg"><Link to={'/login'}>Zorganizuj zbiórkę</Link></button>
+                            <button className="btn-lg">
+                                <Link to={'/login'}>Oddaj rzeczy</Link>
+                            </button>
+                            <button className="btn-lg">
+                                <Link to={'/login'}>Zorganizuj zbiórkę</Link>
+                            </button>
                         </div>
                     </div>
                 </div>

@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {useForm} from "react-hook-form";
 
 export default function Contact() {
-const [success, setSuccess] = useState(false);
+    const [success, setSuccess] = useState(false);
     const {register, handleSubmit, getValues, formState: {errors}, formState, reset} = useForm({
         defaultValues: {
             name: '',
@@ -23,12 +23,9 @@ const [success, setSuccess] = useState(false);
                 headers: {
                     'Content-Type': 'application/json'
                 }
-
             })
         const re = await response.json();
-
-        console.log(re);
-        if (re.status === 'success'){
+        if (re.status === 'success') {
             setSuccess(true)
         }
     }
@@ -42,12 +39,6 @@ const [success, setSuccess] = useState(false);
                 });
         }
     }, [formState, reset]);
-    const handleUserKeyPress = (e) => {
-        if (e.key === "Enter" && !e.shiftKey) {
-            e.preventDefault();
-            onSubmit(e);
-        }
-    }
 
     return (<>
         <div className='backgr'></div>
@@ -59,7 +50,8 @@ const [success, setSuccess] = useState(false);
                 <div className='form-input1'>
                     <div><label htmlFor="name">Wpisz swoje imię</label>
                         <input id='name'
-                               {...register('name', { required: 'Podane imię jest nieprawidłowe',
+                               {...register('name', {
+                                   required: 'Podane imię jest nieprawidłowe',
                                    pattern: {
                                        value: /^[a-zA-Z]+$/,
                                        message: 'Podane imię jest nieprawidłowe'
@@ -73,11 +65,13 @@ const [success, setSuccess] = useState(false);
 
                     <div><label htmlFor="email">Wpisz swój e-mail</label>
                         <input id='email'
-                               {...register('email', {required: 'Podany e-mail jest nieprawidłowy',
-                               pattern: {
-                                   value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
-                                   message:'Podany e-mail jest nieprawidłowy'
-                               }})}
+                               {...register('email', {
+                                   required: 'Podany e-mail jest nieprawidłowy',
+                                   pattern: {
+                                       value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
+                                       message: 'Podany e-mail jest nieprawidłowy'
+                                   }
+                               })}
                                type="text"
                                className={errors.email?.message ? 'error' : ''}
                                placeholder='kornka@email.com'/>
@@ -93,7 +87,6 @@ const [success, setSuccess] = useState(false);
                                       message: 'Wiadomość musi mieć conajmniej 120 znaków'
                                   }
                               })}
-                              onKeyDown={handleUserKeyPress}
                               rows={10}
                               className={errors.msg?.message ? 'error' : ''}
                               placeholder='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'></textarea>
@@ -108,10 +101,9 @@ const [success, setSuccess] = useState(false);
                 <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
                     <img src="/src/assets/Facebook.svg" alt="facebook"/> </a>
                 <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-                <img src="/src/assets/Instagram.svg" alt="instagram"/></a>
+                    <img src="/src/assets/Instagram.svg" alt="instagram"/></a>
             </div>
         </footer>
-
     </>);
 }
 

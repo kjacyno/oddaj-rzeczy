@@ -44,6 +44,8 @@ function Header() {
                         <h2>Cześć {user.displayName}</h2>
 
                     </Button>
+                    <Link to={'/donation-form'} className='menu-link'>Oddaj rzeczy</Link>
+
                     <Menu
                         id="basic-menu"
                         anchorEl={anchorEl}
