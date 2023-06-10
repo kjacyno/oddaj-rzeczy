@@ -1,31 +1,25 @@
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import {useStoreActions, useStoreState} from "easy-peasy";
+import {useStoreActions} from "easy-peasy";
 import PropTypes from 'prop-types';
-import {useEffect, useState} from "react";
 import * as React from 'react';
 import {Link} from 'react-router-dom';
 import {Link as ScrollLink} from 'react-scroll';
 import {logOut} from '../firebase/firebaseAuth.js';
 
-function Header() {
-    const [user, setUser] = useState('')
-    const storeUser = useStoreState((state) => state.user);
+function Header({user, setUser}) {
     const userLogout = useStoreActions((action) => action.userLogout);
 
-    useEffect(() => {
-        setUser(storeUser)
-    },[])
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
-    const handleClose = () => {
+    const handleClose = async () => {
         setAnchorEl(null);
-        userLogout;
-        logOut(setUser);
+        await logOut(setUser);
+        userLogout(user);
     };
     const handleCloseNoLogout = () => {
         setAnchorEl(null);

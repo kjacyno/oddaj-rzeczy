@@ -7,7 +7,7 @@ import {createNewUser} from '../firebase/firebaseAuth.js';
 import HeaderShort from "./HeaderShort.jsx";
 
 export default function Register() {
-    const setUser =  useStoreActions((action) => action.setUser);
+    const setUser =  useStoreActions((action) => action.setUserLogin);
 
     const {register, handleSubmit, getValues, watch, formState: {errors}} = useForm({
         defaultValues: {

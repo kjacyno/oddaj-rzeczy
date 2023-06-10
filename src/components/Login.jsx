@@ -7,7 +7,7 @@ import {signIn} from '../firebase/firebaseAuth.js';
 import HeaderShort from "./HeaderShort.jsx";
 
 export default function Login() {
-    const userLogin =  useStoreActions((action) => action.setUser);
+    const userLogin = useStoreActions((action) => action.setUserLogin);
 
     const {register, handleSubmit, getValues, formState: {errors}} = useForm({
         defaultValues: {
@@ -27,7 +27,7 @@ export default function Login() {
         } catch (error) {
             if (error.code === 'auth/wrong-password') {
                 alert('Hasło jest nieprawidłowe, spróbuj ponownie')
-            } else if(error.code === 'auth/too-many-requests'){
+            } else if (error.code === 'auth/too-many-requests') {
                 alert('Zbyt wiele prób, spróbuj ponownie za chwilę')
             }
         }
@@ -59,10 +59,12 @@ export default function Login() {
 
                     <label htmlFor="pwd">Hasło</label>
                     <input type="password"
-                           {...register('password', {required: 'Podaj hasło', minLength: {
-                               value: 6,
+                           {...register('password', {
+                               required: 'Podaj hasło', minLength: {
+                                   value: 6,
                                    message: 'Hasło musi mieć min. 6 znaków'
-                               }})}
+                               }
+                           })}
                            className={errors.password?.message ? 'error' : ''}
                            id='pwd'
                     />

@@ -1,4 +1,6 @@
 /* eslint-disable react/prop-types */
+import {useStoreState} from "easy-peasy";
+import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import {Element} from 'react-scroll';
 import BasicPagination from "./BasicPagination.jsx";
@@ -6,11 +8,20 @@ import Contact from "./Contact.jsx";
 import Header from "./Header.jsx";
 
 export default function Home() {
+    const [user, setUser] = useState('')
+
+    const storeUser = useStoreState((state) => state.user);
+    useEffect(() => {
+        setUser(storeUser)
+    }, [])
+
     return (
         <Element name="scroll-wrapper">
             <section className="section1">
                 <div id="home-header">
                     <menu><Header
+                        user={user}
+                        setUser={setUser}
                     /></menu>
                     <div className="landing-form">
                         <h1>Zacznij pomagać!<br/>Oddaj niechciane rzeczy w zaufane ręce
@@ -18,10 +29,12 @@ export default function Home() {
                         <img src="/src/assets/Decoration.svg" alt="decoration"/>
                         <div className="landing-form-btns">
                             <button className="btn-lg">
-                                <Link to={'/login'}>Oddaj rzeczy</Link>
+                                {user ? <Link to={'/donation-form'}>Oddaj rzeczy</Link> :
+                                    <Link to={'/login'}>Oddaj rzeczy</Link>}
                             </button>
                             <button className="btn-lg">
-                                <Link to={'/login'}>Zorganizuj zbiórkę</Link>
+                                {user ? <Link to={'/donation-form'}>Zorganizuj zbiórkę</Link> :
+                                    <Link to={'/login'}>Zorganizuj zbiórkę</Link>}
                             </button>
                         </div>
                     </div>
@@ -64,7 +77,10 @@ export default function Home() {
                             <p>kurier przyjedzie w dogodnym terminie</p>
                 </span>
                 </div>
-                <button className="btn-lg"><Link to={'/login'}>Oddaj rzeczy</Link></button>
+                <button className="btn-lg">
+                    {user ? <Link to={'/donation-form'}>Oddaj rzeczy</Link> :
+                    <Link to={'/login'}>Oddaj rzeczy</Link>}
+                </button>
             </section>
             <section id='about'>
                 <div className='about-us'>
