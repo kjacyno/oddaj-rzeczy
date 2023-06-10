@@ -5,12 +5,13 @@ import {
 } from "firebase/auth";
 import {auth} from '/src/firebase/index.js';
 
-export async function  createNewUser(setUser, user, email, password){
+export async function  createNewUser(setUser, email, password){
   if (email.trim() && password.trim() !== ''){
     await createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      setUser(user);
+      setUser({...user, displayName: email});
+
     })
 
     .catch((error) => {

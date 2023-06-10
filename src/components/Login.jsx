@@ -7,7 +7,7 @@ import {signIn} from '../firebase/firebaseAuth.js';
 import HeaderShort from "./HeaderShort.jsx";
 
 export default function Login() {
-    const userLogin =  useStoreActions((action) => action.userLogin);
+    const userLogin =  useStoreActions((action) => action.setUser);
 
     const {register, handleSubmit, getValues, formState: {errors}} = useForm({
         defaultValues: {

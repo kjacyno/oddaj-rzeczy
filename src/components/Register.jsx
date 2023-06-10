@@ -1,11 +1,13 @@
 /* eslint-disable react/prop-types */
 import {Container} from '@mui/material';
+import {useStoreActions} from "easy-peasy";
 import {useForm} from "react-hook-form";
 import {Link, useNavigate} from 'react-router-dom';
 import {createNewUser} from '../firebase/firebaseAuth.js';
 import HeaderShort from "./HeaderShort.jsx";
 
 export default function Register() {
+    const setUser =  useStoreActions((action) => action.setUser);
 
     const {register, handleSubmit, getValues, watch, formState: {errors}} = useForm({
         defaultValues: {
@@ -20,9 +22,8 @@ export default function Register() {
         const email = getValues('email');
         const password = getValues('password')
         await createNewUser(
-            setUser, user, email, password
+            setUser, email, password
         );
-        console.log('signed up ', user)
         navigate('/')
 
     }
@@ -51,7 +52,10 @@ export default function Register() {
                     <p className='error-message'>{errors.email?.message}</p>
                     <label htmlFor="password">Hasło</label>
                     <input type="password"
-                           {...register('password', {required: 'Podaj hasło'})}
+                           {...register('password', {required: 'Podaj hasło', minLength: {
+                                   value: 6,
+                                   message: 'Hasło musi mieć min. 6 znaków'
+                               }})}
                            className={errors.password?.message ? 'error' : ''}
                            id='password'/>
                     <p className='error-message'>{errors.password?.message}</p>
@@ -59,7 +63,7 @@ export default function Register() {
                     <label htmlFor="password">Powtórz hasło</label>
                     <input type="password"
                            {...register('confirm', {required: 'Potwierdź hasło',
-                               validate: (value) => value === watch("password") || "Passwords do not match"
+                               validate: (value) => value === watch("password") || "Hasła muszą być identyczne"
 
                            })}
                            id='confirm'/>
