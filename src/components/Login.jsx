@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import {Container} from '@mui/material';
 import {useStoreActions} from "easy-peasy";
-import PropTypes from "prop-types";
 import {useForm} from "react-hook-form";
 import {Link, useNavigate} from 'react-router-dom';
 import Header from '../components/Header.jsx';
@@ -31,41 +30,41 @@ export default function Login({user, setUser}) {
     return (
         <Container maxWidth="xl">
             <Header/>
-            <div className="user-box">
+            <div className="login">
+                <h2>Zaloguj się</h2>
+                <img src="/src/assets/Decoration.svg" alt="decoration"/>
                 <form
+                    id='login-form'
                     onSubmit={handleSubmit(handleUserLogin)}>
-                    <label htmlFor="email">LOG IN</label>
+
+                    <label htmlFor="email">Email</label>
                     <input type="email"
-                           {...register('email', {required: 'Podany e-mail jest nieprawidłowy',
+                           {...register('email', {
+                               required: 'Podany e-mail jest nieprawidłowy',
                                pattern: {
                                    value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
-                                   message:'Podany e-mail jest nieprawidłowy'
-                               }})}
+                                   message: 'Podany e-mail jest nieprawidłowy'
+                               }
+                           })}
                            id='email'
                            className={errors.email?.message ? 'error' : ''}
-                           placeholder='E-mail'
                     />
                     <p className='error-message'>{errors.email?.message}</p>
 
-                    <label htmlFor="pwd"></label>
+                    <label htmlFor="pwd">Hasło</label>
                     <input type="password"
                            {...register('password', {required: 'Podaj hasło'})}
                            className={errors.password?.message ? 'error' : ''}
                            id='pwd'
-                           placeholder='Password'
                     />
                     <p className='error-message'>{errors.password?.message}</p>
-
-                    <button type='submit'>
+                </form>
+                <div className='login-menu'>
+                    <Link to={'/register'} className='login-btn'>Załóż konto</Link>
+                    <button className='login-btn' type='submit' form='login-form'>
                         Zaloguj się
                     </button>
-                </form>
-
-                <Link to={'/register'}>Załóż konto</Link>
+                </div>
             </div>
         </Container>);
-}
-
-Login.propTypes = {
-    setUser: PropTypes.func,
 }

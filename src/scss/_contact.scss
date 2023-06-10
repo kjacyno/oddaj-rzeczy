@@ -37,6 +37,8 @@
       padding: .5rem 0;
       text-align: left;
       font-family: $font-base;
+      &:focus{
+        outline: none}
 
     }
     .error {

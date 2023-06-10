@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 import {Container} from '@mui/material';
-import PropTypes from 'prop-types'
 import {useState} from 'react';
 import {Link} from 'react-router-dom';
 import Header from '../components/Header.jsx';
@@ -8,16 +8,15 @@ import {createNewUser} from '../firebase/firebaseAuth.js';
 export default function Register({user, setUser}) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [login, setLogin] = useState('');
 
 
     async function handleNewUser(event) {
         event.preventDefault();
         await createNewUser(
             {
-                displayName: login
+                displayName: email
             },
-            setUser, user, login, email, password
+            setUser, user, email, password
         );
 
     }
@@ -25,38 +24,29 @@ export default function Register({user, setUser}) {
     return (
         <Container maxWidth="xl">
             <Header/>
-            <div className="user-box">
+            <div className="register">
+                <h2>Załóż konto</h2>
+                <img src="/src/assets/Decoration.svg" alt="decoration"/>
                 <form id='register-form'
                       onSubmit={handleNewUser}
-                      className="form">
-                    <label htmlFor="register">Załóż konto</label>
-                    <input type="text"
-                           value={login}
-                           id="login"
-                           name="login"
-                           onChange={(event) => setLogin(event.target.value)}
-                           placeholder="imię"
-                    />
-                    <label htmlFor="email"></label>
+                      >
+                    <label htmlFor="email">Email</label>
                     <input type="email"
                            value={email}
                            id="email"
                            placeholder="e-mail"
                            onChange={(event) => setEmail(event.target.value)}/>
-                    <label htmlFor="password"></label>
+                    <label htmlFor="password">Hasło</label>
                     <input type="password"
                            id='password'
                            value={password}
                            placeholder='hasło'
                            onChange={(event) => setPassword(event.target.value)}/>
-                    <button type='submit'><Link to={'/'}>Zarejestruj się</Link></button>
                 </form>
-                <Link to={'/'}>back</Link>
+                <div className='login-menu'>
+                <Link to={'/login'} className='login-btn'>Zaloguj się</Link>
+                <button type='submit' form='register-form' className='login-btn'>Zarejestruj się</button>
+                </div>
             </div>
         </Container>);
-}
-
-Register.propTypes = {
-    user: PropTypes.any,
-    setUser: PropTypes.any
 }
