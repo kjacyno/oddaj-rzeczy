@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import {useStoreState} from "easy-peasy";
+import {useStoreActions, useStoreState} from "easy-peasy";
 import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import {Element} from 'react-scroll';
@@ -8,12 +8,12 @@ import Contact from "./Contact.jsx";
 import Header from "./Header.jsx";
 
 export default function Home() {
-    const [user, setUser] = useState('')
+    const setUser= useStoreActions((action) => action.setUserLogin);
+const user = useStoreState((state) => state.user);
 
-    const storeUser = useStoreState((state) => state.user);
     useEffect(() => {
-        setUser(storeUser)
-    }, [])
+        setUser(user)
+    }, [setUser, user])
 
     return (
         <Element name="scroll-wrapper">
@@ -29,7 +29,7 @@ export default function Home() {
                         <img src="/src/assets/Decoration.svg" alt="decoration"/>
                         <div className="landing-form-btns">
                             <button className="btn-lg">
-                                {user ? <Link to={'/donation-form'}>Oddaj rzeczy</Link> :
+                                {user !== '' ? <Link to={'/donation-form'}>Oddaj rzeczy</Link> :
                                     <Link to={'/login'}>Oddaj rzeczy</Link>}
                             </button>
                             <button className="btn-lg">

@@ -3,6 +3,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import {useStoreActions} from "easy-peasy";
 import PropTypes from 'prop-types';
+import {useEffect} from "react";
 import * as React from 'react';
 import {Link} from 'react-router-dom';
 import {Link as ScrollLink} from 'react-scroll';
@@ -10,7 +11,9 @@ import {logOut} from '../firebase/firebaseAuth.js';
 
 function Header({user, setUser}) {
     const userLogout = useStoreActions((action) => action.userLogout);
-
+    useEffect(() => {
+        setUser(user)
+    }, [setUser])
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -18,8 +21,8 @@ function Header({user, setUser}) {
     };
     const handleClose = async () => {
         setAnchorEl(null);
-        await logOut(setUser);
-        userLogout(user);
+        await logOut(userLogout);
+        userLogout('');
     };
     const handleCloseNoLogout = () => {
         setAnchorEl(null);

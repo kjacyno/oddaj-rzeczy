@@ -1,5 +1,5 @@
 .nav-menu {
-  margin-top: 2.5rem;
+  margin-top: 1rem;
   right: 0;
   background-color: rgba(255, 255, 255, 0.88);
   z-index: 100;
@@ -48,16 +48,26 @@
 
 }
 
+
+.header-menu-disabled {
+  opacity: .5;
+}
 .menu-link {
   padding: .5rem;
   border: 1px solid transparent;
-transition: 0.2s;
+  transition: 0.2s;
   &:hover {
     border: 1px solid $color-third-yellowish;
     border-radius: 5px;
-
   }
 }
-.header-menu-disabled {
-  opacity: .5;
+button {
+  all: unset;
+  margin-left: 2rem;
+  cursor: pointer;
+
+}
+h2{
+  font-size: 1.2rem;
+  font-weight: bold;
 }

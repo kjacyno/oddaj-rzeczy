@@ -39,3 +39,28 @@ a {
   font-family: $font-base;
   font-weight: 300;
 }
+@mixin section-header{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  background-color: white;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  height: 40rem;
+}
+@mixin landing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    img {
+      margin-bottom: 1.5rem;
+    }
+
+}

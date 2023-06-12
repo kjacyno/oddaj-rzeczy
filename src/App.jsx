@@ -1,7 +1,7 @@
 import {Container, CssBaseline} from "@mui/material";
 import {StoreProvider} from "easy-peasy";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import DonationForm from "./components/DonationForm.jsx";
+import DonatePage from "./components/DonatePage.jsx";
 
 import ErrorPage from "./components/ErrorPage.jsx";
 import Home from "./components/Home.jsx";
@@ -26,7 +26,7 @@ function App() {
         },
         {
             path: 'donation-form',
-            element: <DonationForm/>
+            element: <DonatePage/>
         }
     ])
 

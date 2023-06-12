@@ -1,0 +1,74 @@
+#donate-header{
+  @include section-header;
+  background-image: url("src/assets/Form-Hero-Image.jpg");
+  background-size: 70%;
+  background-position: -5rem 0;
+}
+.landing-form-donate{
+  @include landing;
+  margin-right: 5rem;
+  transform: translateY(-35%);
+}
+.info{
+  background-color: $color-third-yellowish;
+  @include sections;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1rem 3rem;
+  p{
+    margin: 0;
+    &:first-of-type{
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+  }
+}
+.donate-form{
+  @include sections;
+  background-image: url("src/assets/Background-Form.jpg");
+  background-size: cover;
+  height: 40rem;
+  background-repeat: no-repeat;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1rem 3rem;
+}
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.radio-btn {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #000000;
+  margin-right: 5px;
+  border-radius: 2px;
+}
+
+input[type="radio"]:checked + .radio-btn {
+  background-color: $color-third-yellowish;
+}
+.donate-form-inputs{
+  display: flex;
+  flex-direction: column;
+  label{
+    padding: 1rem 0;
+    font-size: 1.2rem;
+  }
+}
+.steps{
+  height: auto;
+  width: auto;
+  display: flex;
+  .rectangle{
+    margin-top: 1rem;
+    width: 5rem;
+    height:5rem;
+    border: 1px solid black;
+    rotate: 45deg;
+  }
+}

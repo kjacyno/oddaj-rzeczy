@@ -1,32 +1,15 @@
+
 #home-header {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: space-between;
-  background-color: white;
-  overflow: hidden;
+  @include section-header;
   background-image: url("/src/assets/Home-Hero-Image.jpg");
   background-position: -20% -2rem;
   background-size: 70%;
-  background-repeat: no-repeat;
-  height: 40rem;
 }
 
 .landing-form {
-  right: 0;
+  @include landing;
   transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
 
-  h1 {
-    font-size: 1.5rem;
-  }
-
-  img {
-    margin-bottom: 1.5rem;
-  }
 }
 
 .landing-form-btns {
