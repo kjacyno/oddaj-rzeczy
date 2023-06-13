@@ -50,6 +50,9 @@
   .steps-wrapper {
     height: 70%;
   }
+  p{
+    margin-top: 0;
+  }
 }
 
 input[type="radio"] {
@@ -78,7 +81,11 @@ input[type="radio"]:checked + .radio-btn {
 .donate-form-inputs {
   display: flex;
   flex-direction: column;
-
+h2{
+  font-size: 1.8rem;
+  width: 50rem;
+  margin-top: 0;
+}
   label {
     padding: 1rem 0;
     font-size: 1.2rem;
@@ -126,6 +133,8 @@ input[type="radio"]:checked + .radio-btn {
 .donate-form-select {
   h2 {
     font-size: 1.8rem;
+    width: 50rem;
+    margin-top: 0;
   }
 
   p {
@@ -133,31 +142,28 @@ input[type="radio"]:checked + .radio-btn {
   }
 
   .select-menu {
+
     .select-btn {
       display: flex;
       align-items: center;
-      justify-content: space-evenly;
       font-size: 1.1rem;
       width: 70%;
 
       .sBtn-text {
+        margin-left: 1rem;
         display: flex;
-align-items: center;
-        justify-content: flex-end;
-        width: 45%;
-      }
-
-      span {
+        align-items: center;
+        justify-content: space-between;
+        width: 40%;
         cursor: pointer;
-        width: 50%;
-
         border: 1px solid $color-five-darkgrey;
-        padding: .2rem .7rem;
+        padding: .2rem .7rem .2rem 1.6rem;
         text-align: left;
+
 
         img {
           margin: 0;
-          margin-left: 2rem;
+          margin-left: .2rem;
           width: 20%;
           height: auto;
           transition: .3s;
@@ -165,9 +171,42 @@ align-items: center;
       }
     }
 
+    .options-city {
+      position: absolute;
+      left: 16.8rem;
+      z-index: 1;
+      width: 11.8%;
+      margin-top: 1rem;
+      padding: 0;
+      border: 1px solid $color-five-darkgrey;
+      display: none;
+      background-color: #EDECEA;
+
+      .option {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        cursor: pointer;
+        text-align: center;
+
+
+        span {
+          padding: 0.5rem 1.71rem;
+          width: 100%;
+          text-align: left;
+          border-radius: 10%;
+
+          &:hover {
+            background-color: $color-third-yellowish;
+          }
+        }
+      }
+    }
+
     .options {
       position: relative;
-      left: 57.5%;
+      left: 44.5%;
       width: 1rem;
       margin: 0;
       padding: 0 2rem;
@@ -184,7 +223,7 @@ align-items: center;
 
 
         span {
-          padding: 0.5rem 1.71rem;
+          padding: 0.5rem 1.7rem;
           border-radius: 10%;
 
           &:hover {
@@ -194,14 +233,65 @@ align-items: center;
       }
     }
   }
+
   .select-menu.active {
-  .options{
-    display: block;
+    .options, .options-city {
+      display: block;
+    }
+
+    img {
+      transform: rotate(180deg);
+      transition: .3s;
+
+    }
   }
-  img{
-    transform: rotate(180deg);
-    transition: .3s;
+}
+
+.form-checkbox {
+display: flex;
+  width: 40rem;
+  flex-wrap: wrap;
+  margin-left: .5rem;
+  .checkbox {
+    height: 0;
+    width: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .checkbox:focus + label {
+    outline: 1px solid $color-five-darkgrey;
+  }
+
+  .checkbox:checked + label {
+    background-color: $color-third-yellowish;
 
   }
+
+  label {
+    padding: .6rem 1.2rem;
+    border: 1px solid $color-five-darkgrey;
+    margin: .5rem;
+    cursor: pointer;
+
   }
+}
+
+h4 {
+  font-size: 1.6rem;
+  margin-bottom: 0;
+  margin-top: 1rem;
+}
+h5{
+  font-size: 1.3rem;
+  margin: 1rem 0;
+}
+#optional{
+  background-color: transparent;
+  border: 1px solid $color-five-darkgrey;
+  width: 60%;
+  margin-left: 1rem;
+  font-size: 1.1rem;
+  padding: .3rem;
+
 }

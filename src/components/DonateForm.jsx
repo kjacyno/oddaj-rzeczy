@@ -6,11 +6,11 @@ import DonateFormStep4 from "./DonateForm-Step4.jsx";
 
 export default function DonateForm() {
     const [page, setPage] = useState(1);
-const [formData, setFormData] = useState({
+    const [formData, setFormData] = useState({
     give: '',
     bags: '',
     city: '',
-    to: '',
+    helpGroups: [],
     from: {
         street: '',
         city: '',
@@ -59,6 +59,9 @@ if (page === 4) {
                 />
         }
     }
+
+    const isNextDisabled = page === 3 && formData.helpGroups.length  === 0 || page === 3 && formData.city === '';
+
     return (
         <>
             <div className="info">
@@ -84,7 +87,11 @@ if (page === 4) {
                         page > 1 && <button className='btn-lg' onClick={() => setPage(page - 1)}>Wstecz</button>
                     }
                     <button className='btn-lg'
-                            onClick={handleSubmit}>{page === 1 || page === 2 || page === 3 ? "Dalej" : "Wyślij"}</button>
+                            onClick={handleSubmit}
+                            disabled={isNextDisabled}
+                    >
+                        {page === 1 || page === 2 || page === 3 ? "Dalej" : "Wyślij"}
+                    </button>
                 </div>
             </section>
         </>

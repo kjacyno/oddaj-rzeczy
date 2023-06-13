@@ -1,16 +1,17 @@
-import { useState} from "react";
+import {useEffect, useState} from "react";
 
 export default function DonateFormStep2({formData, setFormData}) {
-
+    const [isOpen, setIsOpen] = useState(false);
+    const [selectedOption, setSelectedOption] = useState("");
+    useEffect(() => {
+        setSelectedOption(formData.bags)
+    }, [])
     const handleSelected = (value) => {
         setFormData({
             ...formData,
             bags: value
         })
     }
-    const [isOpen, setIsOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState("");
-
     const handleSelectClick = () => {
         setIsOpen(!isOpen);
     };
@@ -22,7 +23,7 @@ export default function DonateFormStep2({formData, setFormData}) {
     };
 
     return (
-        <form className='donate-form-select'>
+        <div className='donate-form-select'>
             <h2>Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:</h2>
             <div className={`select-menu ${isOpen ? "active" : ""}`}>
                 <div className='select-btn' onClick={handleSelectClick}>
@@ -41,7 +42,7 @@ export default function DonateFormStep2({formData, setFormData}) {
                     <li className="option" onClick={() => handleOptionClick("5")}><span className='option-text'>5</span></li>
                 </ul>
             </div>
-        </form>
+        </div>
     );
 }
  
