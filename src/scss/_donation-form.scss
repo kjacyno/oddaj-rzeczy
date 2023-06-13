@@ -1,29 +1,42 @@
-#donate-header{
+#donate-header {
   @include section-header;
   background-image: url("src/assets/Form-Hero-Image.jpg");
   background-size: 70%;
   background-position: -5rem 0;
 }
-.landing-form-donate{
+
+.landing-form-donate {
   @include landing;
-  margin-right: 5rem;
-  transform: translateY(-35%);
+  margin-right: 2rem;
+  transform: translateY(-10%);
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1.6rem;
+  }
 }
-.info{
+
+.info {
   background-color: $color-third-yellowish;
   @include sections;
   flex-direction: column;
   align-items: flex-start;
   padding: 1rem 3rem;
-  p{
+
+  p {
     margin: 0;
-    &:first-of-type{
+
+    &:first-of-type {
       font-weight: 600;
       font-size: 1.2rem;
     }
   }
 }
-.donate-form{
+
+.donate-form {
   @include sections;
   background-image: url("src/assets/Background-Form.jpg");
   background-size: cover;
@@ -33,42 +46,162 @@
   align-items: flex-start;
   justify-content: center;
   padding: 1rem 3rem;
+
+  .steps-wrapper {
+    height: 70%;
+  }
 }
+
 input[type="radio"] {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
+  cursor: pointer;
+
 }
 
 .radio-btn {
   display: inline-block;
-  width: 16px;
-  height: 16px;
-  border: 2px solid #000000;
+  width: 1.4rem;
+  height: 1.4rem;
+  border: 1px solid $color-five-darkgrey;
   margin-right: 5px;
   border-radius: 2px;
+  cursor: pointer;
+
 }
 
 input[type="radio"]:checked + .radio-btn {
   background-color: $color-third-yellowish;
 }
-.donate-form-inputs{
+
+.donate-form-inputs {
   display: flex;
   flex-direction: column;
-  label{
+
+  label {
     padding: 1rem 0;
     font-size: 1.2rem;
   }
 }
-.steps{
+
+.steps {
   height: auto;
   width: auto;
   display: flex;
-  .rectangle{
-    margin-top: 1rem;
-    width: 5rem;
-    height:5rem;
+
+  .rectangle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem .5rem;
+    width: 7rem;
+    height: 7rem;
     border: 1px solid black;
     rotate: 45deg;
+    position: relative;
+
+    p {
+      text-align: center;
+      font-size: 1.2rem;
+      margin: 0;
+      rotate: -45deg;
+      font-weight: 200;
+
+      &:first-of-type {
+        font-size: 1.5rem;
+        position: absolute;
+        top: 5px;
+        left: 15px;
+      }
+
+      &:last-of-type {
+        padding: .8rem;
+      }
+    }
+  }
+}
+
+.donate-form-select {
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  p {
+    font-size: 1.3rem;
+  }
+
+  .select-menu {
+    .select-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      font-size: 1.1rem;
+      width: 70%;
+
+      .sBtn-text {
+        display: flex;
+align-items: center;
+        justify-content: flex-end;
+        width: 45%;
+      }
+
+      span {
+        cursor: pointer;
+        width: 50%;
+
+        border: 1px solid $color-five-darkgrey;
+        padding: .2rem .7rem;
+        text-align: left;
+
+        img {
+          margin: 0;
+          margin-left: 2rem;
+          width: 20%;
+          height: auto;
+          transition: .3s;
+        }
+      }
+    }
+
+    .options {
+      position: relative;
+      left: 57.5%;
+      width: 1rem;
+      margin: 0;
+      padding: 0 2rem;
+      border: 1px solid $color-five-darkgrey;
+      display: none;
+
+      .option {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        text-align: center;
+
+
+        span {
+          padding: 0.5rem 1.71rem;
+          border-radius: 10%;
+
+          &:hover {
+            background-color: $color-third-yellowish;
+          }
+        }
+      }
+    }
+  }
+  .select-menu.active {
+  .options{
+    display: block;
+  }
+  img{
+    transform: rotate(180deg);
+    transition: .3s;
+
+  }
   }
 }

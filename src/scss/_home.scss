@@ -9,7 +9,13 @@
 .landing-form {
   @include landing;
   transform: translateY(-50%);
+  h1 {
+    font-size: 1.5rem;
+  }
 
+  img {
+    margin-bottom: 1.5rem;
+  }
 }
 
 .landing-form-btns {

@@ -19,22 +19,15 @@ export default function DonatePage() {
                             Wystarczą 4 proste kroki
                         </p>
                         <div className='steps'>
-                            <div className="rectangle"></div>
-                            <div className="rectangle"></div>
-                            <div className="rectangle"></div>
-                            <div className="rectangle"></div>
+                            <div className="rectangle"><p>1 </p><p>Wybierz rzeczy</p></div>
+                            <div className="rectangle"><p>2 </p><p>Spakuj je w worku</p></div>
+                            <div className="rectangle"><p>3 </p><p>Wybierz fundację</p></div>
+                            <div className="rectangle"><p>4 </p><p>Zamów kuriera</p></div>
                         </div>
                     </div>
                 </div>
-
-                <div className="info">
-            <p>Ważne!</p>
-                    <p className='info-content'>Uzupełnij szczegóły dotyczące Twoich rzeczy. Dzięki temu będziemy wiedzieć komu najlepiej je przekazać.</p>
-                </div>
             </section>
-            <section className='donate-form'>
-                <DonateForm/>
-            </section>
+            <DonateForm/>
             <section id='contact'>
                 <Contact/>
             </section>

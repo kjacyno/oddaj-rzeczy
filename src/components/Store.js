@@ -11,7 +11,3 @@ export const store = createStore({
         localStorage.removeItem('user');
     }),
 });
-
-export const formData = createStore({
-
-})
