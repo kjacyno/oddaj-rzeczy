@@ -50,7 +50,8 @@
   .steps-wrapper {
     height: 70%;
   }
-  p{
+
+  p {
     margin-top: 0;
   }
 }
@@ -81,11 +82,13 @@ input[type="radio"]:checked + .radio-btn {
 .donate-form-inputs {
   display: flex;
   flex-direction: column;
-h2{
-  font-size: 1.8rem;
-  width: 50rem;
-  margin-top: 0;
-}
+
+  h2 {
+    font-size: 1.8rem;
+    width: 50rem;
+    margin-top: 0;
+  }
+
   label {
     padding: 1rem 0;
     font-size: 1.2rem;
@@ -248,10 +251,11 @@ h2{
 }
 
 .form-checkbox {
-display: flex;
+  display: flex;
   width: 40rem;
   flex-wrap: wrap;
   margin-left: .5rem;
+
   .checkbox {
     height: 0;
     width: 0;
@@ -282,16 +286,80 @@ h4 {
   margin-bottom: 0;
   margin-top: 1rem;
 }
-h5{
+
+h5 {
   font-size: 1.3rem;
   margin: 1rem 0;
 }
-#optional{
+
+#optional {
   background-color: transparent;
   border: 1px solid $color-five-darkgrey;
   width: 60%;
   margin-left: 1rem;
   font-size: 1.1rem;
   padding: .3rem;
+}
+.address-info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.address-details.from{
+  width: 40%;
+  input{
+    text-align: left;
+  }
+}
+.address-details {
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+width: 50%;
+.input{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  p{
+    font-size: 1.1rem;
+    width: 30%;
+  }
+}
+label {
+width: 70%;
+margin-bottom: 1rem;
+}
 
+input,
+textarea {
+  background-color: transparent;
+  border: 1px solid $color-five-darkgrey;
+  padding: .4rem;
+ font-family: $font-base;
+  text-align: center;
+  width: 100%;
+}
+
+textarea {
+  height: 6rem;
+  margin-left: 0;
+  resize: none;
+  text-align: justify;
+}}
+.summary {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 1rem;
+  p{
+    font-size: 1.1rem;
+    margin: 0;
+  }
+ img{
+   height: auto;
+   width: 2.5rem;
+   margin-right: 1.5rem;
+ }
 }

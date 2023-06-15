@@ -5,23 +5,26 @@ export default function DonateFormStep3({formData, setFormData}) {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedCity, setSelectedCity] = useState("");
     const [checked, setChecked] = useState([]);
+    const [optional, setOptional] = useState('')
 
 
     useEffect(() => {
-        setSelectedCity(formData.city);
-        setChecked(formData.helpGroups)
+        setSelectedCity(formData.localization);
+        setChecked(formData.helpGroups);
+        setOptional(formData.localizationSpecific);
     }, [])
     const handleSelectedCity = (value) => {
         setFormData({
             ...formData,
-            city: value
+            localization: value
         })
     }
     const handleOptional = (value) => {
-        setFormData((prevFormData) => ({
-            ...prevFormData,
-            city: {...prevFormData.city, value}
-        }))
+        setFormData({
+            ...formData,
+            localizationSpecific: value
+        });
+        setOptional(value)
     }
 
     const handleSelectClick = () => {
@@ -76,32 +79,32 @@ export default function DonateFormStep3({formData, setFormData}) {
 
         <h4>Komu chcesz pomóc?</h4>
         <div className="form-checkbox">
-            <input type="checkbox" id='checkbox1' className='checkbox' onChange={() => handleCheckbox('dzieci')}
-                   checked={checked.includes('dzieci')}/>
+            <input type="checkbox" id='checkbox1' className='checkbox' onChange={() => handleCheckbox('dzieciom')}
+                   checked={checked.includes('dzieciom')}/>
 
             <label
             htmlFor='checkbox1'>dzieciom</label>
             <input type="checkbox" id='checkbox2' className='checkbox'
-                   onChange={() => handleCheckbox('samotne matki')}
-                   checked={checked.includes('samotne matki')}
+                   onChange={() => handleCheckbox('samotnym matkom')}
+                   checked={checked.includes('samotnym matkom')}
             /><label htmlFor='checkbox2'>samotnym matkom</label>
             <input type="checkbox" id='checkbox3' className='checkbox'
-                   onChange={() => handleCheckbox('bezdomni')}
-                   checked={checked.includes('bezdomni')}
+                   onChange={() => handleCheckbox('bezdomnym')}
+                   checked={checked.includes('bezdomnym')}
             /><label htmlFor='checkbox3'>osobom w kryzysie
             bezdomności</label>
             <input type="checkbox" id='checkbox4' className='checkbox'
-                   onChange={() => handleCheckbox('niepełnosprawni')}
-                   checked={checked.includes('niepełnosprawni')}
+                   onChange={() => handleCheckbox('niepełnosprawnym')}
+                   checked={checked.includes('niepełnosprawnym')}
             /><label
             htmlFor='checkbox4'>niepełnosprawnym</label>
-            <input type="checkbox" id='checkbox5' className='checkbox' onChange={() => handleCheckbox('starsi')}
-                   checked={checked.includes('starsi')}
+            <input type="checkbox" id='checkbox5' className='checkbox' onChange={() => handleCheckbox('osobom starszym')}
+                   checked={checked.includes('osobom starszym')}
             /><label
-            htmlFor='checkbox5'>osobom starsszym</label>
+            htmlFor='checkbox5'>osobom starszym</label>
         </div>
         <h5>Wpisz nazwę konkretnej organizacji(opcjonalne):</h5>
-        <label><input type="text" id='optional' onChange={(e) => handleOptional(e.target.value)}/></label>
+        <label><input type="text" id='optional' onChange={(e) => handleOptional(e.target.value)} placeholder={optional}/></label>
     </>);
 }
 

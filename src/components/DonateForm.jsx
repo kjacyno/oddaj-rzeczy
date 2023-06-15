@@ -3,39 +3,43 @@ import DonateFormStep1 from "./DonateForm-Step1.jsx";
 import DonateFormStep2 from "./DonateForm-Step2.jsx";
 import DonateFormStep3 from "./DonateForm-Step3.jsx";
 import DonateFormStep4 from "./DonateForm-Step4.jsx";
+import DonateFormSubmit from "./DonateFormSubmit.jsx";
 
 export default function DonateForm() {
     const [page, setPage] = useState(1);
     const [formData, setFormData] = useState({
-    give: '',
-    bags: '',
-    city: '',
-    helpGroups: [],
-    from: {
+        type: '',
+        bags: '',
+        localization: '',
+        localizationSpecific: '',
+        helpGroups: [],
         street: '',
         city: '',
-        zip:'',
-        tel: ''
-    },
-    post:{
+        postCode: '',
+        phone: '',
         date: '',
         time: '',
-        note:''
-    }
-})
-    const handleSubmit = () => {
-        setPage(page + 1);
-if (page === 4) {
-    setPage(1)
-}
-    }
+        note: ''
+    })
+
+
+    const handleSubmit =  (formData) => {
+       if (page === 3 && formData.helpGroups.length === 0) {return }
+        else if( page === 3 &&
+           !(page === 3 &&
+               ((page === 3 && (formData.localization !== '')) || (page === 3 && formData.localizationSpecific !== ""))))
+        {return }
+
+        setPage(page + 1)
+
+        }
 
     const steps = () => {
         switch (page) {
             case 1:
                 return <DonateFormStep1
-                formData={formData}
-                setFormData={setFormData}
+                    formData={formData}
+                    setFormData={setFormData}
                 />;
             case 2:
                 return <DonateFormStep2
@@ -52,6 +56,11 @@ if (page === 4) {
                     formData={formData}
                     setFormData={setFormData}
                 />;
+            case 5:
+                return <DonateFormSubmit
+                    formData={formData}
+                    setFormData={setFormData}
+                />;
             default:
                 return <DonateFormStep1
                     formData={formData}
@@ -59,11 +68,10 @@ if (page === 4) {
                 />
         }
     }
-
-    const isNextDisabled = page === 3 && formData.helpGroups.length  === 0 || page === 3 && formData.city === '';
-
     return (
-        <>
+        <> {
+            page === 5 ?  ''
+      : (
             <div className="info">
                 <p>Ważne!</p>
                 {page === 1 ?
@@ -78,19 +86,20 @@ if (page === 4) {
                                 celu ich pomocy.</p> :
                             <p className='info-content'> Podaj adres oraz termin odbioru rzeczy.</p>
                 }
-            </div>
+            </div>)
+        }
             <section className='donate-form'>
-                <p>Krok {page}/4</p>
+                {page === 5 ? '' :    <p>Krok {page}/4</p>}
                 <div className='steps-wrapper'>{steps()}</div>
-                <div className='landing-form-btns'>
+
+        <div className='landing-form-btns'>
                     {
                         page > 1 && <button className='btn-lg' onClick={() => setPage(page - 1)}>Wstecz</button>
                     }
                     <button className='btn-lg'
-                            onClick={handleSubmit}
-                            disabled={isNextDisabled}
+                            onClick={() => {handleSubmit(formData)}}
                     >
-                        {page === 1 || page === 2 || page === 3 ? "Dalej" : "Wyślij"}
+                        {page === 1 || page === 2 || page === 3 || page === 4 ? "Dalej" : "Potwierdź"}
                     </button>
                 </div>
             </section>

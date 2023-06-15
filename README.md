@@ -11,7 +11,7 @@ się niepotrzebnych rzeczy. Często użytkownicy mają trudności ze zlokalizowa
 oddać swoje rzeczy. Aplikacja ma na celu rozwiązanie tego problemu, umożliwiając łatwe znalezienie instytucji,
 które chętnie przyjmą dary i przekażą je osobom potrzebującym.
 
-## Technologie
+## Tech stack:
 
 - Sass
 - JavaScript
@@ -26,5 +26,6 @@ które chętnie przyjmą dary i przekażą je osobom potrzebującym.
 
 
 
+*Desktop version only 
 
-Projekt wykonany w ramach CodersLab Javascript Developer Bootcamp
+*Project design Copyright: CodersLab
