@@ -317,6 +317,15 @@ h5 {
   flex-direction: column;
   align-items: flex-start;
 width: 50%;
+  input{
+  &:invalid{
+    border: 1px solid #8c0303;
+    box-shadow: 5px 5px 5px 0 rgba(0,0,0,0.5);}
+    &:required{
+      transition: .2s;
+    }
+
+  }
 .input{
   display: flex;
   align-items: center;
@@ -330,6 +339,12 @@ width: 50%;
 label {
 width: 70%;
 margin-bottom: 1rem;
+  .error-message{
+    font-size: .8rem;
+    width: 100%;
+    padding: 0;
+    margin: .5rem 0 0 0 ;
+  }
 }
 
 input,
@@ -340,10 +355,14 @@ textarea {
  font-family: $font-base;
   text-align: center;
   width: 100%;
+  &:focus{
+    outline: none;
+  }
 }
 
 textarea {
-  height: 6rem;
+  height: 6.1rem;
+  margin-top: .5rem;
   margin-left: 0;
   resize: none;
   text-align: justify;
@@ -362,4 +381,17 @@ textarea {
    width: 2.5rem;
    margin-right: 1.5rem;
  }
+}
+.details{
+  h5{
+    font-size: 1.1rem;
+    margin: 0;
+    margin-bottom: .5rem;
+  }
+  .address-details.from, .address-details{
+    margin: 0;
+    p{
+      font-size: 1rem;
+    }
+  }
 }
