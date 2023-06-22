@@ -395,3 +395,20 @@ textarea {
     }
   }
 }
+.donate-thanks{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  width: 70%;
+  h1{
+    width: 65%;
+    text-align: center;
+    font-weight: 300;
+    font-size: 2rem;
+  }
+  img{
+    width: 25%;
+  }
+}

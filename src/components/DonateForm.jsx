@@ -5,6 +5,7 @@ import DonateFormStep3 from "./DonateForm-Step3.jsx";
 import DonateFormStep4 from "./DonateForm-Step4.jsx";
 import DonateFormSubmit from "./DonateFormSubmit.jsx";
 import {saveData} from "../firebase/firestoreCloud.js";
+import DonateFormThanks from "./DonateFormThanks.jsx";
 
 export default function DonateForm() {
     const [page, setPage] = useState(1);
@@ -104,15 +105,13 @@ export default function DonateForm() {
                     setFormData={setFormData}
                 />;
             default:
-                return <DonateFormStep1
-                    formData={formData}
-                    setFormData={setFormData}
+                return <DonateFormThanks
                 />
         }
     }
     return (
         <> {
-            page === 5 ? ''
+            page === 5 || page === 6 ? ''
                 : (
                     <div className="info">
                         <p>Ważne!</p>
@@ -132,8 +131,9 @@ export default function DonateForm() {
                     </div>)
         }
             <section className='donate-form'>
-                {page === 5 ? '' : <p>Krok {page}/4</p>}
+                {page === 5 || page === 6 ? '' : <p>Krok {page}/4</p>}
                 <div className='steps-wrapper'>{steps()}</div>
+                {page === 6 ? '' :
 
                 <div className='landing-form-btns'>
                     {
@@ -146,7 +146,7 @@ export default function DonateForm() {
                     >
                         {page === 1 || page === 2 || page === 3 || page === 4 ? "Dalej" : "Potwierdź"}
                     </button>
-                </div>
+                </div> }
             </section>
         </>
     );

@@ -4,7 +4,6 @@ import { doc, setDoc, collection } from "firebase/firestore";
 
 export async function saveData (data){
     const user = auth.currentUser;
-    console.log(user.uid);
     const docRef = doc(collection(db, 'users', user.uid,'donations'));
     const userRef = doc(db, 'users', user.uid)
     const userData = {email: user.email}
