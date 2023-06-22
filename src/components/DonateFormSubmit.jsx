@@ -1,6 +1,9 @@
 /* eslint-disable react/prop-types */
 
+
 export default function DonateFormSubmit({formData}) {
+
+
     return (
         <div className='donate-form-select'>
             <h2>Podsumowanie Twojej darowizny:</h2>

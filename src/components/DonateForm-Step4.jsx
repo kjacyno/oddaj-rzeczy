@@ -36,7 +36,7 @@ export default function DonateFormStep4({formData, setFormData}) {
                 setErrorMessage('wymagane');
         }
     }
-    const handleAddress = (value, inputId) => {
+     const handleAddress = (value, inputId) => {
         setInputId(inputId);
 
         const postCodePattern = /^\d{2}-\d{3}$/;
@@ -123,6 +123,8 @@ export default function DonateFormStep4({formData, setFormData}) {
                 <div className='address-details'>
                     <h5>Termin odbioru:</h5>
                     <div className="input"><p>Data:</p><label><input type="date" id='date'
+                                                                     min={new Date().toISOString().split('T')[0]
+                                                                         }
                                                                      onClick={() => inputClick('date')}
                                                                      onChange={(e) => handleAddress(e.target.value, 'date')}
                                                                      placeholder={inputValue.date}
