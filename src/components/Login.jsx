@@ -1,50 +1,81 @@
+/* eslint-disable react/prop-types */
 import {Container} from '@mui/material';
-import PropTypes from "prop-types";
-import {useState} from "react";
-import {Link} from 'react-router-dom';
-import Header from '../components/Header.jsx';
+import {useStoreActions} from "easy-peasy";
+import {useForm} from "react-hook-form";
+import {Link, useNavigate} from 'react-router-dom';
 import {signIn} from '../firebase/firebaseAuth.js';
+import HeaderShort from "./HeaderShort.jsx";
 
-export default function Login({setUser}) {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('')
+export default function Login() {
+    const userLogin = useStoreActions((action) => action.setUserLogin);
 
-    async function handleUserLogin(event) {
-        event.preventDefault();
-        await signIn(email, password, setUser);
-        console.log('signed in');
+    const {register, handleSubmit, getValues, formState: {errors}} = useForm({
+        defaultValues: {
+            name: '',
+            email: '',
+            msg: '',
+        }
+    });
+    const navigate = useNavigate();
+
+    async function handleUserLogin() {
+        const email = getValues('email');
+        const password = getValues('password')
+        try {
+            await signIn(email, password, userLogin);
+            navigate('/')
+        } catch (error) {
+            if (error.code === 'auth/wrong-password') {
+                alert('Hasło jest nieprawidłowe, spróbuj ponownie')
+            } else if (error.code === 'auth/too-many-requests') {
+                alert('Zbyt wiele prób, spróbuj ponownie za chwilę')
+            }
+        }
     }
 
     return (
         <Container maxWidth="xl">
-            <Header/>
-            <div className="user-box">
+            <HeaderShort/>
+            <div className="login">
+                <h2>Zaloguj się</h2>
+                <img src="/src/assets/Decoration.svg" alt="decoration"/>
                 <form
-                    onSubmit={handleUserLogin}>
-                    <label htmlFor="email">LOG IN</label>
+                    id='login-form'
+                    onSubmit={handleSubmit(handleUserLogin)}>
+
+                    <label htmlFor="email">Email</label>
                     <input type="email"
-                           value={email}
+                           {...register('email', {
+                               required: 'Podany e-mail jest nieprawidłowy',
+                               pattern: {
+                                   value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
+                                   message: 'Podany e-mail jest nieprawidłowy'
+                               }
+                           })}
                            id='email'
-                           placeholder='E-mail'
-                           onChange={(event) => setEmail(event.target.value)}
+                           className={errors.email?.message ? 'error' : ''}
                     />
-                    <label htmlFor="pwd"></label>
+                    <p className='error-message'>{errors.email?.message}</p>
+
+                    <label htmlFor="pwd">Hasło</label>
                     <input type="password"
+                           {...register('password', {
+                               required: 'Podaj hasło', minLength: {
+                                   value: 6,
+                                   message: 'Hasło musi mieć min. 6 znaków'
+                               }
+                           })}
+                           className={errors.password?.message ? 'error' : ''}
                            id='pwd'
-                           value={password}
-                           placeholder='Password'
-                           onChange={(event) => setPassword(event.target.value)}
                     />
-                    <button type='submit'
-                    ><Link to={'/'}>
-                        OK</Link>
-                    </button>
+                    <p className='error-message'>{errors.password?.message}</p>
                 </form>
-                <Link to={'/'}>back</Link>
+                <div className='login-menu'>
+                    <Link to={'/register'} className='login-btn'>Załóż konto</Link>
+                    <button className='login-btn' type='submit' form='login-form'>
+                        Zaloguj się
+                    </button>
+                </div>
             </div>
         </Container>);
-}
-
-Login.propTypes = {
-    setUser: PropTypes.func,
 }

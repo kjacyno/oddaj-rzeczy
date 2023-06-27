@@ -18,6 +18,13 @@ które chętnie przyjmą dary i przekażą je osobom potrzebującym.
 - React
 - react-router-dom
 - react-scroll
+- react-hook-form
+- easy-peasy
 - MUI 
 - Vite
 - Firebase
+
+
+
+
+Projekt wykonany w ramach CodersLab Javascript Developer Bootcamp

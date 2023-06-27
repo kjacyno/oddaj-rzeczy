@@ -1,14 +1,15 @@
 import {Container, CssBaseline} from "@mui/material";
-import {useState} from 'react'
+import {StoreProvider} from "easy-peasy";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import DonationForm from "./components/DonationForm.jsx";
 
 import ErrorPage from "./components/ErrorPage.jsx";
 import Home from "./components/Home.jsx";
 import Login from "./components/Login.jsx";
 import Register from "./components/Register.jsx";
+import {store} from "./components/Store.js";
 
 function App() {
-    const [user, setUser] = useState({})
     const router = createBrowserRouter([
         {
             path: '/',
@@ -17,16 +18,15 @@ function App() {
         },
         {
             path: 'login',
-            element: <Login
-                setUser={setUser}
-            />,
+            element: <Login/>,
         },
         {
             path: 'register',
-            element: <Register
-                user={user}
-                setUser={setUser}
-            />,
+            element: <Register/>,
+        },
+        {
+            path: 'donation-form',
+            element: <DonationForm/>
         }
     ])
 
@@ -34,7 +34,9 @@ function App() {
         <>
             <CssBaseline/>
             <Container maxWidth="xl">
-                <RouterProvider router={router}/>
+                <StoreProvider store={store}>
+                    <RouterProvider router={router}/>
+                </StoreProvider>
             </Container>
         </>
     )

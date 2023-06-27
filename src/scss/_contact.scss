@@ -1,0 +1,130 @@
+
+#contact {
+  height: 50rem;
+  width: 100%;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url("/src/assets/Background-Contact-Form.jpg");
+  background-size: 90%;
+  background-repeat: no-repeat;
+  position: relative;
+
+  .contact-us {
+    width: 35%;
+    padding-top: 4rem;
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    right: 15%;
+    top: 4%;
+  }
+  .success{
+    color: #0aa10a;
+    font-weight: 600;
+  }
+  form {
+    position: relative;
+    width: 80%;
+
+    ::placeholder {
+      font-family: $font-base;
+      opacity: .5;
+    }
+
+    input, textarea {
+      border: none;
+      border-bottom: 1px solid $color-five-darkgrey;
+      padding: .5rem 0;
+      text-align: left;
+      font-family: $font-base;
+      &:focus{
+        outline: none}
+
+    }
+    .error {
+      border-bottom: 1.5px solid red;
+    }
+
+    textarea {
+      resize: none;
+      width: 100%;
+      height: 5rem;
+      overflow: hidden;
+    }
+
+    label {
+      font-weight: 600;
+      padding: .5rem 0;
+    }
+
+    .form-input1 {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+
+      div:first-of-type{
+        padding-right: 2rem;
+      }
+      div {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 120%;
+
+        label {
+          margin-bottom: 1rem;
+        }
+        input {
+          width: 100%;
+        }
+      }
+    }
+
+    .form-input {
+      padding: 1rem 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+    }
+.success {
+  color: green;
+}
+    button {
+      position: absolute;
+      right: 0;
+      margin-top: 2rem;
+      padding: .4rem 1.4rem;
+      background: transparent;
+      border: 1px solid $color-four-grey;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+  }
+
+  footer {
+    width: 50%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    bottom: 0;
+    left: 60%;
+    transform: translateX(-50%);
+
+    a:last-of-type {
+      padding-right: 2.5rem;
+    }
+
+    div:first-of-type {
+      padding-right: 55%;
+    }
+  }
+}
+
+.error-message{
+  color: red;
+  font-size: .9rem;
+  margin-top: 0;
+}

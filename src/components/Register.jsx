@@ -1,62 +1,79 @@
+/* eslint-disable react/prop-types */
 import {Container} from '@mui/material';
-import PropTypes from 'prop-types'
-import {useState} from 'react';
-import {Link} from 'react-router-dom';
-import Header from '../components/Header.jsx';
+import {useStoreActions} from "easy-peasy";
+import {useForm} from "react-hook-form";
+import {Link, useNavigate} from 'react-router-dom';
 import {createNewUser} from '../firebase/firebaseAuth.js';
+import HeaderShort from "./HeaderShort.jsx";
 
-export default function Register({user, setUser}) {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [login, setLogin] = useState('');
+export default function Register() {
+    const setUser =  useStoreActions((action) => action.setUserLogin);
 
+    const {register, handleSubmit, getValues, watch, formState: {errors}} = useForm({
+        defaultValues: {
+            name: '',
+            email: '',
+            msg: '',
+        }
+    });
+    const navigate = useNavigate();
 
-    async function handleNewUser(event) {
-        event.preventDefault();
+    async function handleNewUser() {
+        const email = getValues('email');
+        const password = getValues('password')
         await createNewUser(
-            {
-                displayName: login
-            },
-            setUser, user, login, email, password
+            setUser, email, password
         );
+        navigate('/')
 
     }
 
     return (
         <Container maxWidth="xl">
-            <Header/>
-            <div className="user-box">
+            <HeaderShort/>
+            <div className="register">
+                <h2>Załóż konto</h2>
+                <img src="/src/assets/Decoration.svg" alt="decoration"/>
                 <form id='register-form'
-                      onSubmit={handleNewUser}
-                      className="form">
-                    <label htmlFor="register">Załóż konto</label>
-                    <input type="text"
-                           value={login}
-                           id="login"
-                           name="login"
-                           onChange={(event) => setLogin(event.target.value)}
-                           placeholder="imię"
-                    />
-                    <label htmlFor="email"></label>
+                      onSubmit={handleSubmit(handleNewUser)}
+                      >
+                    <label htmlFor="email">Email</label>
                     <input type="email"
-                           value={email}
+                           {...register('email', {
+                               required: 'Podany e-mail jest nieprawidłowy',
+                               pattern: {
+                                   value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
+                                   message: 'Podany e-mail jest nieprawidłowy'
+                               }
+                           })}
                            id="email"
-                           placeholder="e-mail"
-                           onChange={(event) => setEmail(event.target.value)}/>
-                    <label htmlFor="password"></label>
+                           className={errors.email?.message ? 'error' : ''}
+                    />
+                    <p className='error-message'>{errors.email?.message}</p>
+                    <label htmlFor="password">Hasło</label>
                     <input type="password"
-                           id='password'
-                           value={password}
-                           placeholder='hasło'
-                           onChange={(event) => setPassword(event.target.value)}/>
-                    <button type='submit'><Link to={'/'}>Zarejestruj się</Link></button>
+                           {...register('password', {required: 'Podaj hasło', minLength: {
+                                   value: 6,
+                                   message: 'Hasło musi mieć min. 6 znaków'
+                               }})}
+                           className={errors.password?.message ? 'error' : ''}
+                           id='password'/>
+                    <p className='error-message'>{errors.password?.message}</p>
+
+                    <label htmlFor="password">Powtórz hasło</label>
+                    <input type="password"
+                           {...register('confirm', {required: 'Potwierdź hasło',
+                               validate: (value) => value === watch("password") || "Hasła muszą być identyczne"
+
+                           })}
+                           id='confirm'/>
+                    <p className='error-message'>{errors.confirm?.message}</p>
+
                 </form>
-                <Link to={'/'}>back</Link>
+                <div className='login-menu'>
+                <Link to={'/login'} className='login-btn'>Zaloguj się</Link>
+                <button type='submit' form='register-form' className='login-btn'>Zarejestruj się</button>
+                </div>
             </div>
         </Container>);
-}
-
-Register.propTypes = {
-    user: PropTypes.any,
-    setUser: PropTypes.any
 }
