@@ -4,6 +4,8 @@ Celem projektu "Oddam Rzeczy w Dobre Ręce" jest stworzenie miejsca, w którym k
 zaufanym instytucjom. Projekt opiera się na stronie internetowej, która zapewnia prosty formularz, ułatwiający
 użytkownikom przekazanie swoich rzeczy.
 
+https://oddaj-rzeczy-e454f.web.app/
+
 ## Opis
 
 "Oddam Rzeczy w Dobre Ręce" to projekt, który powstał w odpowiedzi na potrzebę wygodnego i bezpiecznego sposobu pozbycia
