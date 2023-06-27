@@ -1,7 +1,8 @@
 import Contact from "./Contact.jsx";
 import DonateForm from "./DonateForm.jsx";
 import HeaderShort from "./HeaderShort.jsx";
-
+import Decoration from '/src/assets/Decoration.svg'
+import '/src/scss/main.scss'
 export default function DonatePage() {
 
     return (<>
@@ -14,7 +15,7 @@ export default function DonatePage() {
                     <div className="landing-form-donate">
                         <h1>Oddaj rzeczy, których już nie chcesz<br/>POTRZEBUJĄCYM
                         </h1>
-                        <img src="/src/assets/Decoration.svg" alt="decoration"/>
+                        <img src={Decoration} alt="decoration"/>
                         <p>
                             Wystarczą 4 proste kroki
                         </p>

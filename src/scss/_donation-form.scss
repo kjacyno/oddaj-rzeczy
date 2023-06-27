@@ -1,6 +1,6 @@
 #donate-header {
   @include section-header;
-  background-image: url("src/assets/Form-Hero-Image.jpg");
+  background-image: url("/src/assets/Form-Hero-Image.jpg");
   background-size: 70%;
   background-position: -5rem 0;
 }
@@ -38,7 +38,7 @@
 
 .donate-form {
   @include sections;
-  background-image: url("src/assets/Background-Form.jpg");
+  background-image: url("/src/assets/Background-Form.jpg");
   background-size: cover;
   height: 40rem;
   background-repeat: no-repeat;
@@ -53,6 +53,9 @@
 
   p {
     margin-top: 0;
+  }
+  .landing-form-btns{
+    margin-top: 2rem;
   }
 }
 
@@ -299,6 +302,7 @@ h5 {
   margin-left: 1rem;
   font-size: 1.1rem;
   padding: .3rem;
+  margin-bottom: 2rem;
 }
 .address-info {
   display: flex;
@@ -324,7 +328,6 @@ width: 50%;
     &:required{
       transition: .2s;
     }
-
   }
 .input{
   display: flex;
@@ -366,7 +369,8 @@ textarea {
   margin-left: 0;
   resize: none;
   text-align: justify;
-}}
+}
+}
 .summary {
   display: flex;
   align-items: center;

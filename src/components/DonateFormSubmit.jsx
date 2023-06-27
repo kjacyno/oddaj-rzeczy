@@ -1,4 +1,6 @@
 /* eslint-disable react/prop-types */
+import Icon1 from "/src/assets/Icon-1.svg"
+import Icon4 from "/src/assets/Icon-4.svg"
 
 
 export default function DonateFormSubmit({formData}) {
@@ -9,11 +11,11 @@ export default function DonateFormSubmit({formData}) {
             <h2>Podsumowanie Twojej darowizny:</h2>
             <h5>Oddajesz:</h5>
             <div className='summary'>
-                <img src="/src/assets/Icon-1.svg" alt='donation'/>
+                <img src={Icon1} alt='donation'/>
                 <p>{formData.bags} worki, {formData.type}, {formData.helpGroups.join(", ")}</p>
             </div>
             <div className='summary'>
-                <img src="/src/assets/Icon-4.svg" alt="city"/><p>dla
+                <img src={Icon4} alt="city"/><p>dla
                 lokalizacji: {formData.localization} {formData.localozationSpecific}</p>
             </div>
             <div className="details">

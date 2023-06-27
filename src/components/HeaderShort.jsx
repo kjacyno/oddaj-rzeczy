@@ -2,7 +2,6 @@ import {useStoreActions, useStoreState} from "easy-peasy";
 import {useEffect} from "react";
 import {Link, useLocation, useNavigate} from 'react-router-dom';
 import {logOut} from "../firebase/firebaseAuth.js";
-/* eslint-disable react/prop-types */
 
 
 export default function HeaderShort() {

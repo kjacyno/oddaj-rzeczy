@@ -5,6 +5,7 @@ import {useForm} from "react-hook-form";
 import {Link, useNavigate} from 'react-router-dom';
 import {createNewUser} from '../firebase/firebaseAuth.js';
 import HeaderShort from "./HeaderShort.jsx";
+import Decoration from '/src/assets/Decoration.svg'
 
 export default function Register() {
     const setUser =  useStoreActions((action) => action.setUserLogin);
@@ -33,7 +34,7 @@ export default function Register() {
             <HeaderShort/>
             <div className="register">
                 <h2>Załóż konto</h2>
-                <img src="/src/assets/Decoration.svg" alt="decoration"/>
+                <img src={Decoration} alt="decoration"/>
                 <form id='register-form'
                       onSubmit={handleSubmit(handleNewUser)}
                       >

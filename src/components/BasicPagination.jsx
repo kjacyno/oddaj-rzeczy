@@ -2,6 +2,7 @@ import {Stack} from "@mui/material";
 import Pagination from '@mui/material/Pagination';
 import {useEffect, useState} from "react";
 import {foundations, local, organizations} from "./OrganizationsContent.jsx";
+import Decoration from '/src/assets/Decoration.svg'
 
 export default function BasicPagination() {
     const [currentPage, setCurrentPage] = useState(1);
@@ -30,7 +31,7 @@ export default function BasicPagination() {
     return (
         <section id='organizations'>
             <h3>Komu pomagamy</h3>
-            <img src="/src/assets/Decoration.svg" alt="decoration"/>
+            <img src={Decoration} alt="decoration"/>
             <div className='org-select'>
                 <p onClick={() => handleTabChange(1)}>Fundacjom</p>
                 <p onClick={() => handleTabChange(2)}>Organizacjom pozarządowym</p>

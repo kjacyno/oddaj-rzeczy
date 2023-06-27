@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import ArrowDown from "/src/assets/Icon-Arrow-Down.svg"
 
 export default function DonateFormStep3({formData, setFormData}) {
 
@@ -57,9 +58,9 @@ export default function DonateFormStep3({formData, setFormData}) {
             <div className={`select-menu ${isOpen ? "active" : ""}`}>
                 <div className='select-btn' onClick={handleSelectClick}>
                     {selectedCity ? <span className='sBtn-text'> {selectedCity}<img
-                            src="/src/assets/Icon-Arrow-Down.svg"/></span> :
+                            src={ArrowDown}/></span> :
                         (<span className='sBtn-text'>&#9472;&#9472; wybierz &#9472;&#9472;
-                            <img src="/src/assets/Icon-Arrow-Down.svg"/>
+                            <img src={ArrowDown}/>
           </span>)}
                 </div>
                 <ul className="options-city">

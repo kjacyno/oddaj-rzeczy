@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-
+import ArrowDown from "/src/assets/Icon-Arrow-Down.svg"
 export default function DonateFormStep2({formData, setFormData}) {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState("");
@@ -29,9 +29,9 @@ export default function DonateFormStep2({formData, setFormData}) {
                 <div className='select-btn' onClick={handleSelectClick}>
                     <p> Liczba 60l worków:</p>
 
-            {selectedOption ? <span className='sBtn-text'> {selectedOption}<img src="/src/assets/Icon-Arrow-Down.svg" /></span> :
+            {selectedOption ? <span className='sBtn-text'> {selectedOption}<img src={ArrowDown} /></span> :
                 (<span className='sBtn-text'>&#9472;&#9472; wybierz &#9472;&#9472;
-                    <img src="/src/assets/Icon-Arrow-Down.svg" />
+                    <img src={ArrowDown} />
           </span>)}
                 </div>
                 <ul className="options">
