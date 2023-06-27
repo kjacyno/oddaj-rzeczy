@@ -1,19 +1,25 @@
 /* eslint-disable react/prop-types */
-import {useStoreState} from "easy-peasy";
-import {useEffect, useState} from "react";
+import {useStoreActions, useStoreState} from "easy-peasy";
+import {useEffect} from "react";
 import {Link} from "react-router-dom";
 import {Element} from 'react-scroll';
 import BasicPagination from "./BasicPagination.jsx";
 import Contact from "./Contact.jsx";
 import Header from "./Header.jsx";
-
+import Decoration from '/src/assets/Decoration.svg'
+import People from "/src/assets/People.jpg"
+import Icon1 from "/src/assets/Icon-1.svg"
+import Icon2 from "/src/assets/Icon-2.svg"
+import Icon3 from "/src/assets/Icon-3.svg"
+import Icon4 from "/src/assets/Icon-4.svg"
+import Signature from "/src/assets/Signature.svg"
 export default function Home() {
-    const [user, setUser] = useState('')
+    const setUser= useStoreActions((action) => action.setUserLogin);
+const user = useStoreState((state) => state.user);
 
-    const storeUser = useStoreState((state) => state.user);
     useEffect(() => {
-        setUser(storeUser)
-    }, [])
+        setUser(user)
+    }, [setUser, user])
 
     return (
         <Element name="scroll-wrapper">
@@ -26,10 +32,10 @@ export default function Home() {
                     <div className="landing-form">
                         <h1>Zacznij pomagać!<br/>Oddaj niechciane rzeczy w zaufane ręce
                         </h1>
-                        <img src="/src/assets/Decoration.svg" alt="decoration"/>
+                        <img src={Decoration} alt="decoration"/>
                         <div className="landing-form-btns">
                             <button className="btn-lg">
-                                {user ? <Link to={'/donation-form'}>Oddaj rzeczy</Link> :
+                                {user !== '' ? <Link to={'/donation-form'}>Oddaj rzeczy</Link> :
                                     <Link to={'/login'}>Oddaj rzeczy</Link>}
                             </button>
                             <button className="btn-lg">
@@ -54,25 +60,25 @@ export default function Home() {
             <section id="idea">
                 <div className='idea-header'><h2>Wystarczą 4 proste kroki
                 </h2>
-                    <img src="/src/assets/Decoration.svg" alt="decoration"/></div>
+                    <img src={Decoration} alt="decoration"/></div>
                 <div className='idea-desc'> 
                     <span>
-                      <img src="/src/assets/Icon-1.svg" alt="choose"/>
+                      <img src={Icon1} alt="choose"/>
                         <p>Wybierz rzeczy</p>
                         <p>ubrania, zabawki, sprzęt i inne</p>
                 </span>
                     <span>
-                        <img src="/src/assets/Icon-2.svg" alt="pack"/>
+                        <img src={Icon2} alt="pack"/>
                             <p>Spakuj je</p>
                             <p>skorzystaj z worków na śmieci</p>
                 </span>
                     <span>
-                        <img src="/src/assets/Icon-3.svg" alt="decide"/>
+                        <img src={Icon3} alt="decide"/>
                             <p>Zdecyduj komu chcesz pomóc</p>
                             <p>wybierz zaufane miejsce</p>
                 </span>
                     <span>
-                       <img src="/src/assets/Icon-4.svg" alt="send"/>
+                       <img src={Icon4} alt="send"/>
                             <p>Zamów kuriera</p>
                             <p>kurier przyjedzie w dogodnym terminie</p>
                 </span>
@@ -85,10 +91,10 @@ export default function Home() {
             <section id='about'>
                 <div className='about-us'>
                     <h3>O nas</h3>
-                    <img src="/src/assets/Decoration.svg" alt="decoration"/>
+                    <img src={Decoration} alt="decoration"/>
                     <p>Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery. Bunya nuts
                         black-eyed pea prairie turnip leek lentil turnip greens parsnip.<br/><br/>
-                        <img src="/src/assets/Signature.svg" alt="signature"
+                        <img src={Signature} alt="signature"
                              style={{
                                  height: 'auto',
                                  width: '20%',
@@ -99,7 +105,7 @@ export default function Home() {
                              }}/>
                     </p>
                 </div>
-                <img src="/src/assets/People.jpg" alt="people"/>
+                <img src={People} alt="people"/>
             </section>
             <section id='organizations'>
                 <BasicPagination/>

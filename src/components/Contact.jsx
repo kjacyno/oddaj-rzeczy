@@ -1,6 +1,8 @@
 import {useEffect, useState} from "react";
 import {useForm} from "react-hook-form";
-
+import Decoration from '/src/assets/Decoration.svg'
+import Facebook from "/src/assets/Facebook.svg"
+import Instagram from "/src/assets/Instagram.svg"
 export default function Contact() {
     const [success, setSuccess] = useState(false);
     const {register, handleSubmit, getValues, formState: {errors}, formState, reset} = useForm({
@@ -44,7 +46,7 @@ export default function Contact() {
         <div className='backgr'></div>
         <div className='contact-us'>
             <h2>Skontaktuj się z nami</h2>
-            <img src="/src/assets/Decoration.svg" alt="decoration"/>
+            <img src={Decoration} alt="decoration"/>
             {success ? <p className='success'>Wiadomość została wysłana!<br/>wkrótce sie skontaktujemy.</p> : ""}
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className='form-input1'>
@@ -99,9 +101,9 @@ export default function Contact() {
             <div>Copyright by Coders Lab</div>
             <div>
                 <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
-                    <img src="/src/assets/Facebook.svg" alt="facebook"/> </a>
+                    <img src={Facebook} alt="facebook"/> </a>
                 <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-                    <img src="/src/assets/Instagram.svg" alt="instagram"/></a>
+                    <img src={Instagram} alt="instagram"/></a>
             </div>
         </footer>
     </>);

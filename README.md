@@ -4,6 +4,8 @@ Celem projektu "Oddam Rzeczy w Dobre Ręce" jest stworzenie miejsca, w którym k
 zaufanym instytucjom. Projekt opiera się na stronie internetowej, która zapewnia prosty formularz, ułatwiający
 użytkownikom przekazanie swoich rzeczy.
 
+https://oddaj-rzeczy-e454f.web.app/
+
 ## Opis
 
 "Oddam Rzeczy w Dobre Ręce" to projekt, który powstał w odpowiedzi na potrzebę wygodnego i bezpiecznego sposobu pozbycia
@@ -11,7 +13,7 @@ się niepotrzebnych rzeczy. Często użytkownicy mają trudności ze zlokalizowa
 oddać swoje rzeczy. Aplikacja ma na celu rozwiązanie tego problemu, umożliwiając łatwe znalezienie instytucji,
 które chętnie przyjmą dary i przekażą je osobom potrzebującym.
 
-## Technologie
+## Tech stack:
 
 - Sass
 - JavaScript
@@ -26,5 +28,6 @@ które chętnie przyjmą dary i przekażą je osobom potrzebującym.
 
 
 
+*Desktop version only 
 
-Projekt wykonany w ramach CodersLab Javascript Developer Bootcamp
+*Project design Copyright: CodersLab
